@@ -1,8 +1,8 @@
 <template>
     <div v-if="isLoggedIn">
-        <el-menu mode="horizontal"  :collapse="isCollapse" router>
+        <el-menu mode="horizontal"  :collapse="isCollapse" router class="el-menu-demo">
                 <el-menu-item index="/myprofile">{{ currentUser }}的主页</el-menu-item>
-                <el-menu-item index="2" @click="showUploadImage=true">上传</el-menu-item>
+                <el-menu-item index="/myprofile" @click="showUploadImage=true">上传</el-menu-item>
                 <el-menu-item index="3" @click="logout()">退出登录</el-menu-item>
         </el-menu>
     </div>
@@ -36,7 +36,6 @@ export default{
             showLoginForm:false,
             isLoggedIn:false,
             showUploadImage:false,
-            showHomePage:true,
             currentUser:'',
             store,
         }
@@ -51,6 +50,7 @@ export default{
         logout() {
             this.isLoggedIn = false;
             this.currentUser = null;
+            this.$router.push({path:'/homepage'})
         },
         hideUploadImage(value){
             this.showUploadImage = value;
@@ -68,3 +68,13 @@ export default{
     },
 }
 </script>
+<style>
+
+.el-menu-demo .el-menu-item{
+    border-bottom-color:#ffffff!important;
+    font-size: 10px;
+}
+.el-menu-item {
+transition: none !important;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div class="search-container">
-        <el-input placeholder="请输入内容" v-model="searchtext" />
+        <el-input placeholder="请输入内容" v-model="searchtext" style="margin-right: 5px;"/>
         <el-button type="default" @click="checksearch()" class="search-button">搜索</el-button>
     </div>
 </template>

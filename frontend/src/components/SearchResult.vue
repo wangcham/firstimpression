@@ -8,7 +8,7 @@
         <div class="card border-secondary mb-3" style="max-width: 20rem;">
           <div class="card-header">{{ item.username }}</div>
           <div class="card-body text-secondary">
-            <el-avatar alt="avatar" :src="getavatar(item)" />
+            <el-avatar alt="avatar" :src="getavatar(item)" @click="showPublicProfile(item)" style="cursor:pointer"/>
             <p class="card-text">{{ item.desc }}</p>
           </div>
         </div>
@@ -160,8 +160,11 @@
                 console.log(error)
             }
         )
-
-    }
+    },
+    showPublicProfile(item){
+      this.store.user = item.username;
+      this.$router.push({path:'/publicprofile'})
+    },
   }
 }
 

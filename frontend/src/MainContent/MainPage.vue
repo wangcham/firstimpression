@@ -2,4 +2,5 @@
   <router-view name="homepage"></router-view>
   <router-view name="myprofile"></router-view>
   <router-view name="searchresult"></router-view>
+  <router-view name="publicprofile"></router-view>
 </template>

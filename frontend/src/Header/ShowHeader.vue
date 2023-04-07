@@ -1,9 +1,9 @@
 <template>
   <div class="header">
       <div class="left">
-      <img alt="All That You Can't Leave Behind" src="../assets/bono2.jpg" class="headerimage" style="cursor:pointer">
+      <img alt="All That You Can't Leave Behind" src="../assets/bono2.jpg" class="headerimage" style="cursor:pointer" @click="showHomePage">
       </div>
-      <div class="headlogo">FirstImpression</div>
+      <div class="headlogo" @click="showHomePage" style="cursor:pointer">FirstImpression</div>
       <div class="spacer"></div>
       <div class="searchbarandmenu" style="display: flex;">
           <SearchBar/>
@@ -21,8 +21,12 @@
         components:{
             SearchBar,
             MenuItem,
+        },
+        methods:{
+          showHomePage(){
+            this.$router.push({path:'/homepage'});
+          }
         }
-
     }
 </script>
 

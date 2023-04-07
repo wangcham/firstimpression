@@ -10,6 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MyProfile from './components/MyProfile.vue'
 import HomePage from './MainContent/HomePage.vue'
 import SearchResult from './components/SearchResult.vue'
+import PublicProfile from './components/PublicProfile.vue'
 
 const app = createApp(App);
 
@@ -17,9 +18,10 @@ const routes = [
     { path: '/', redirect: '/homepage' },
     { path: '/homepage', name: 'HomePage', components: { homepage: HomePage } },
     { path: '/myprofile', name: 'MyProfile', components: { myprofile: MyProfile } },
-    {path:'/searchresult',name:'SearchResult',components:{searchresult:SearchResult},props: (route) => ({ searchText: route.query.searchText })}
-]
+    {path:'/searchresult',name:'SearchResult',components:{searchresult:SearchResult},props: (route) => ({ searchText: route.query.searchText })},
+    {path:'/publicprofile',name:'PublicProfile',components:{publicprofile:PublicProfile}},
 
+] 
 
 const router = createRouter({
     history: createWebHistory(),
