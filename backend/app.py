@@ -8,6 +8,7 @@ from getimage import getimage_app
 from avatar import avatar_app
 from updateitem import updateitem_app
 from searchresult import searchresult_app
+from gethomepage import gethomepage_app
 
 
 app = Flask(__name__, static_folder='dist', static_url_path='')
@@ -18,6 +19,7 @@ app.register_blueprint(getimage_app)
 app.register_blueprint(avatar_app)
 app.register_blueprint(updateitem_app)
 app.register_blueprint(searchresult_app)
+app.register_blueprint(gethomepage_app)
 
 
 

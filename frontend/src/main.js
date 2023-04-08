@@ -11,16 +11,17 @@ import MyProfile from './components/MyProfile.vue'
 import HomePage from './MainContent/HomePage.vue'
 import SearchResult from './components/SearchResult.vue'
 import PublicProfile from './components/PublicProfile.vue'
+import AboutInfo from './components/AboutInfo.vue'
 
 const app = createApp(App);
 
 const routes = [
     { path: '/', redirect: '/homepage' },
-    { path: '/homepage', name: 'HomePage', components: { homepage: HomePage } },
     { path: '/myprofile', name: 'MyProfile', components: { myprofile: MyProfile } },
-    {path:'/searchresult',name:'SearchResult',components:{searchresult:SearchResult},props: (route) => ({ searchText: route.query.searchText })},
-    {path:'/publicprofile',name:'PublicProfile',components:{publicprofile:PublicProfile}},
-
+    { path:'/searchresult',name:'SearchResult',components:{searchresult:SearchResult},props: (route) => ({ searchText: route.query.searchText })},
+    { path:'/publicprofile',name:'PublicProfile',components:{publicprofile:PublicProfile}},
+    { path:'/about',name:'AboutInfo',components:{aboutinfo:AboutInfo}},
+    { path: '/homepage', name: 'HomePage', components: { homepage: HomePage } },
 ] 
 
 const router = createRouter({

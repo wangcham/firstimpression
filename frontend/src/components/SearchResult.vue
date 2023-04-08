@@ -3,6 +3,7 @@
     <el-divider />
     <h2>查询到的用户：</h2>
     <el-divider />
+    <!--item代表的是用户卡片-->
     <div class="wrap">
       <div v-for="item in items" :key="item.username">
         <div class="card border-secondary mb-3" style="max-width: 20rem;">
@@ -14,24 +15,24 @@
         </div>
       </div>
     </div>
-  
+   <!--card代表的是印象卡片-->
     <h2>查询到的印象:</h2>
     <el-divider />
     <div class="wrap">
-    <div v-for="card in cards" :key="card.created_at">
+      <div v-for="card in cards" :key="card.created_at">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" :src="getimage(card)" alt="image">
           <div class="card-body">
             <h5 class="card-title">{{ card.created_at }}</h5>
             <p class="card-text" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ card.text }}</p>
             <a href="#" class="btn btn-primary" @click="showcard(card)">详细信息</a>
+            </div>
           </div>
-        </div>
+      </div>
     </div>
   </div>
-  </div>
   <el-dialog v-model="showdialog" title="详细信息">
-    <ShowCard :card="card"></ShowCard>
+    <ShowCard :card="cardinfo"></ShowCard>
   </el-dialog>
   </template>
   
@@ -52,6 +53,7 @@
         avatarUrls: {},
         cards:[],
         cardUrls:{},
+        cardinfo:[],
         showdialog:false,
         store,
       }
@@ -73,6 +75,7 @@
     },
     methods: {
       search(){
+        //获取搜索到的用户信息
         axios
         .post(common.backend_prefix + '/get_userinfo_from_results', {
           searchtext: this.$route.query.searchText,
@@ -90,6 +93,7 @@
           console.log(error)
         })
 
+        //获取搜索到的卡片信息
         axios
         .post(common.backend_prefix+'/get_cards_from_results',{searchtext:this.$route.query.searchText})
         .then(response =>{
@@ -105,10 +109,12 @@
             console.log(error)
         })
     },
+    //展示卡片功能
       showcard(card){
-        this.card = card;
+        this.cardinfo = card;
         this.showdialog = true;
       },
+      //获取用户信息卡片上的头像
       getavatar(item) {
         const { username } = item
         // 如果缓存中已有该用户的头像 URL，直接返回
@@ -134,6 +140,8 @@
             console.log(error)
           })
       },
+
+      //获取impressions卡片上的图片
       getimage(card){
         const {created_at,username} = card
         if(this.cardUrls[created_at] && this.cardUrls[created_at][username]){
@@ -162,8 +170,8 @@
         )
     },
     showPublicProfile(item){
-      this.store.user = item.username;
-      this.$router.push({path:'/publicprofile'})
+        this.store.user = item.username
+        this.$router.push({path:'/publicprofile'})
     },
   }
 }

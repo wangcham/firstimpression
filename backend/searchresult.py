@@ -29,7 +29,7 @@ def connect():
 def close(conn, cursor):
     cursor.close()
     conn.close()
-
+#获取用户卡片
 @searchresult_app.route('/get_userinfo_from_results',methods=['post'])
 def get_userinfo_from_results():
     data = request.get_json()
@@ -48,7 +48,7 @@ def get_userinfo_from_results():
             data.append(item)
     close(conn, cursor)
     return jsonify(data)
-
+#获取卡片信息
 @searchresult_app.route('/get_cards_from_results',methods=['post'])
 def get_cards_from_results():
     data = request.get_json()
@@ -71,7 +71,7 @@ def get_cards_from_results():
         return jsonify({'status':'fail','message':'data里为空值'})
     else:
         return jsonify(data)
-
+#从卡片信息中获取图片
 @searchresult_app.route('/get_images_from_results',methods=['post'])
 def get_images_from_results():
     data = request.get_json()

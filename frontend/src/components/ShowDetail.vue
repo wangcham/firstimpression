@@ -31,6 +31,7 @@
 import common from '../assets/js/common'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import {store} from '../store.js'
     export default{
     props:{
         item:{
@@ -47,13 +48,14 @@ import { ElMessage } from 'element-plus'
             avatar_url:'',
             showdelete:false,
             showupdate:false,
-            text:''
+            text:'',
+            store,
         }
     },
     methods:{
         gettext(){
             axios.post(common.backend_prefix+'/gettext',{
-                username:this.currentUser,
+                username:this.store.currentUser,
                 created_at:this.item.created_at,
             }).then(
                 response =>{
@@ -74,7 +76,7 @@ import { ElMessage } from 'element-plus'
             this.showupdate = false
         },
         submitupdate(){
-            const username = this.currentUser;
+            const username = this.store.currentUser;
             axios.post(common.backend_prefix+'/updateitem',{
                 username:username,
                 created_at:this.item.created_at,
@@ -97,7 +99,7 @@ import { ElMessage } from 'element-plus'
             this.showdelete = false;
         },
         confirmdelete(){
-            axios.post(common.backend_prefix+'/deleteitem',{username:this.currentUser,created_at:this.item.created_at}).then(
+            axios.post(common.backend_prefix+'/deleteitem',{username:this.store.currentUser,created_at:this.item.created_at}).then(
                 response =>{
                     console.log(response);
                     if(response.data.status == 'fail'){
@@ -114,7 +116,7 @@ import { ElMessage } from 'element-plus'
         }
     },
     mounted(){
-        const username = this.currentUser;
+        const username = this.store.currentUser;
         axios.post(common.backend_prefix+'/getavatar',{username:username},{responseType:'blob'})
         .then(
             response => {

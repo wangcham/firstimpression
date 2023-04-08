@@ -5,7 +5,7 @@
             <el-image :src="url" alt="detailedimage" style="margin-bottom: 20px; max-width: fit-content;" />
         </div>
         <p>{{ card.text }}</p>
-        <el-avatar :size="50" :src="avatar_url" />
+        <el-avatar :size="50" :src="avatar_url" @click="showprofile(card)"/>
         <p>{{ card.username }}</p>
     </div>
 </template>
@@ -14,6 +14,7 @@
 import common from '../assets/js/common'
 import axios from 'axios'
 import {ElMessage} from 'element-plus'
+import {store} from '../store.js'
 
 export default{
     props:{
@@ -27,9 +28,11 @@ export default{
             avatar_url:'',
             text:'',
             url:'',
+            store,
         }
     },
     mounted(){
+        console.log('进入到showcard中')
         axios
         .post(common.backend_prefix+'/get_images_from_results',{username:this.card.username,created_at:this.card.created_at},{responseType:'blob'})
         .then(response =>{
@@ -64,6 +67,12 @@ export default{
             console.log(error)
           })
       },
+      methods:{
+        showprofile(card){
+            this.store.user = card.username;
+            this.$router.push({path:'/publicprofile'})
+        }
+      }
 }
 
 

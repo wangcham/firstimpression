@@ -3,7 +3,7 @@
         <el-menu mode="horizontal"  :collapse="isCollapse" router class="el-menu-demo">
                 <el-menu-item index="/myprofile">{{ currentUser }}的主页</el-menu-item>
                 <el-menu-item index="/myprofile" @click="showUploadImage=true">上传</el-menu-item>
-                <el-menu-item index="3" @click="logout()">退出登录</el-menu-item>
+                <el-menu-item index="/homepage" @click="logout()">退出登录</el-menu-item>
         </el-menu>
     </div>
     <el-dialog v-model="showUploadImage" title='上传图片'>

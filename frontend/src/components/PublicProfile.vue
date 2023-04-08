@@ -3,7 +3,7 @@
     <div style="margin-bottom: 30px; margin-top: 30px;">
     <div style="display: flex; align-items: center; justify-content: center;">
       <el-avatar :size="70" :src="avatar_url" style="margin-right: 20px ; cursor: pointer;"/>
-      <h1 style="text-align: center; font: normal normal normal 12px/1 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif; font-size: 25px;">{{ currentUser }}</h1>
+      <h1 style="text-align: center; font: normal normal normal 12px/1 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif; font-size: 25px;">{{ store.user }}</h1>
     </div>
     <div>
       <p style="text-align: center; font-family: Arial; margin-top: 30px;">{{ this.desc }}</p>
@@ -25,7 +25,7 @@
   </div>
 
   <el-dialog v-model="showdialog" title="详细信息">
-    <PublicDetail :item="item" :user="store.user"></PublicDetail>
+    <PublicDetail :item="selectedItem" :user="store.user"></PublicDetail>
   </el-dialog>
 </template>
 
@@ -42,6 +42,8 @@ import common from '../assets/js/common'
                 store,
                 avatar_url:'',
                 desc:'',
+                showdialog:false,
+                selectedItem:[],
             }
         },
         components:{
@@ -107,6 +109,10 @@ import common from '../assets/js/common'
       let response = await axios.post(common.backend_prefix+'/getimage',  { username: username, n: n }, { responseType: 'blob' });
       let blob = new Blob([response.data], { type: response.data.type});
       item.imgUrl = URL.createObjectURL(blob);
+    },
+    publicdetail(item){
+      this.showdialog = true;
+      this.selectedItem = item;
     },
   },
 }

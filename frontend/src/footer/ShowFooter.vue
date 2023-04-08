@@ -10,9 +10,22 @@
       <img src="../assets/twitter.svg" 
           alt="Twitter" width="30" height="30">
     </a>
+    <h2 class="footerlogo" @click="showAbout()">关于本站</h2>
   </div>
 </div>
 </template>
+
+
+<script>
+  export default{
+    name:'ShowFooter',
+    methods:{
+      showAbout(){
+        this.$router.push({path:'/about'})
+      }
+    }
+  }
+</script>
 
 <style>
 .footer-logo{

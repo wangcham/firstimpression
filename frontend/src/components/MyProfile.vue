@@ -3,7 +3,7 @@
   <div style="margin-bottom: 30px; margin-top: 30px;">
     <div style="display: flex; align-items: center; justify-content: center;">
       <el-avatar :size="70" :src="avatar_url" style="margin-right: 20px ; cursor: pointer;" title="更改头像" @click="showavatar = true"/>
-      <h1 style="text-align: center; font: normal normal normal 12px/1 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif; font-size: 25px;">{{ currentUser }}</h1>
+      <h1 style="text-align: center; font: normal normal normal 12px/1 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif; font-size: 25px;">{{ store.currentUser }}</h1>
       <img @click="showupdate = true" src="../assets/setting.svg" alt="settings" style="width: 20px; margin-left:20px; cursor: pointer;" title="用户设置">
     </div>
     <div>
