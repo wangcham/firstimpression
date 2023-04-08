@@ -1,20 +1,18 @@
 <template>
   <el-divider />
-    <div style="display: flex; justify-content: center;">
-  <div>
-    <img src="../assets/bono2.jpg" alt="logo" style="width: 30px; height: 30px; margin-right: 25px;">
+  <div class="footer-container">
+    <div class="logo-container">
+      <img src="../assets/bono2.jpg" alt="logo" class="logo">
+      <h2 class="footer-logo">Created by WangCham</h2>
+      <a href="https://twitter.com/wagcham" target="_blank">
+        <img src="../assets/twitter.svg" alt="Twitter" class="twitter-logo">
+      </a>
+    </div>
+    <div class="about-container">
+      <p @click="showAbout()">关于本站</p>
+    </div>
   </div>
-  <div>
-    <h2 class="footer-logo">Created by WangCham</h2>
-    <a href="https://twitter.com/wagcham" target="_blank">
-      <img src="../assets/twitter.svg" 
-          alt="Twitter" width="30" height="30">
-    </a>
-    <h2 class="footerlogo" @click="showAbout()">关于本站</h2>
-  </div>
-</div>
 </template>
-
 
 <script>
   export default{
@@ -28,9 +26,43 @@
 </script>
 
 <style>
-.footer-logo{
-  font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
-  font-size: 15px;
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 25px;
+}
+
+.footer-logo {
+  font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+  font-size: 15px;
+  margin-right:20px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+}
+
+.twitter-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+p {
+  text-align: right;
+  cursor: pointer;
+}
 </style>
+
