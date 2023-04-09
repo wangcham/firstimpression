@@ -9,7 +9,7 @@
       </a>
     </div>
     <div class="about-container">
-      <p @click="showAbout()">关于本站</p>
+      <el-button @click="showAbout()" style="border: none;">关于本站</el-button>
     </div>
   </div>
 </template>
