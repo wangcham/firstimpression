@@ -2,7 +2,7 @@
     <div class="carddialog">
         <p>{{ card.created_at }}</p>
         <div id="splash_area">
-            <el-image :src="url" alt="detailedimage" style="margin-bottom: 20px; max-width: fit-content;" />
+            <el-image :src="url" alt="detailedimage" style="margin-bottom: 20px; max-width: fit-content; text-align: center;" />
         </div>
         <p>{{ card.text }}</p>
         <el-avatar :size="50" :src="avatar_url" @click="showprofile(card)"/>

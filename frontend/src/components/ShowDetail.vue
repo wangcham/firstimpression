@@ -18,8 +18,10 @@
         <el-button type="primary" @click="confirmdelete(),hidedelete()">确定</el-button>
     </el-dialog>
     <el-dialog v-model="showupdate" title="更改印象文本">
-        <p>更改此条印象的描述</p>
-        <p>文本最大长度为500字</p>
+        <div class="update">
+            <p style="text-align: center;">更改此条印象的描述</p>
+            <p style="text-align:center">文本最大长度为500字</p>
+        </div>
         <el-input v-model="text" type="textarea" :autosize="{ minRows: 4, maxRows: 6 }" class="margin"></el-input>
         <div>
             <el-button type="default" @click="hideupdate()">取消</el-button>
