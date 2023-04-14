@@ -2,10 +2,9 @@ from flask import Blueprint, request, jsonify, render_template, session
 from flask_cors import CORS
 import mysql.connector
 import os
-from flask_cors import cross_origin
 
 loginregis_app = Blueprint('loginregis_app', __name__, static_folder='dist', static_url_path='')
-CORS(loginregis_app)
+CORS(loginregis_app,)
 
 config = {
     'user': 'root',
@@ -15,15 +14,6 @@ config = {
     'port': '3306',
     'charset': 'utf8mb4'
 }
-
-@loginregis_app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST,PUT,DELETE'
-    return response
-
 
 @loginregis_app.route('/')
 def index():
@@ -68,7 +58,6 @@ def register():
 
 
 @loginregis_app.route('/login', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def login():
     data = request.get_json()
     username = data['username']
