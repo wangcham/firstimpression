@@ -49,7 +49,7 @@ export default{
         },
         logout() {
             this.isLoggedIn = false;
-            this.currentUser = null;
+            this.store.currentUser = null;
             this.$router.push({path:'/homepage'})
         },
         hideUploadImage(value){

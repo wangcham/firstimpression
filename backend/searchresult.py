@@ -71,6 +71,8 @@ def get_cards_from_results():
         return jsonify({'status':'fail','message':'data里为空值'})
     else:
         return jsonify(data)
+    
+
 #从卡片信息中获取图片
 @searchresult_app.route('/get_images_from_results',methods=['post'])
 def get_images_from_results():

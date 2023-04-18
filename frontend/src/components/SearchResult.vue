@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <el-dialog v-model="showdialog" title="详细信息">
+  <el-dialog v-model="showdialog" title="详细信息" destroy-on-close>
     <ShowCard :card="cardinfo"></ShowCard>
   </el-dialog>
   </template>

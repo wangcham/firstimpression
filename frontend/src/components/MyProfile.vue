@@ -63,7 +63,7 @@ export default {
     }
   },
   methods:{
-    async getImage(item, n) {
+    async getImage(item,n) {
       let username = this.store.currentUser;
       let response = await axios.post(common.backend_prefix+'/getimage',  { username: username, n: n }, { responseType: 'blob' });
       let blob = new Blob([response.data], { type: response.data.type});

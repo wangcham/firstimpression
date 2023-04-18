@@ -11,8 +11,8 @@
         </div>
     </div>
 </div>
-<el-dialog v-model="showdialog" title="详细信息">
-    <ShowCard :card="cardinfo"></ShowCard>
+<el-dialog v-model="showdialog" title="详细信息" destroy-on-close>
+    <ShowCard :card="currentCard"></ShowCard>
 </el-dialog>
 </template>
 
@@ -40,6 +40,11 @@ export default{
     },
     mounted(){
         this.search();
+    },
+    computed: {
+        currentCard() {
+            return this.cardinfo;
+        }
     },
     methods:{
         search(){

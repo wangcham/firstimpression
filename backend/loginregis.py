@@ -4,7 +4,7 @@ import mysql.connector
 import os
 
 loginregis_app = Blueprint('loginregis_app', __name__, static_folder='dist', static_url_path='')
-CORS(loginregis_app,)
+CORS(loginregis_app,supports_credentials=True)
 
 config = {
     'user': 'root',
