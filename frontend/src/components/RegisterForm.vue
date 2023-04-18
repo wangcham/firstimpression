@@ -48,11 +48,11 @@
             ElMessage.error(response.data.message)
         }else{
             ElMessage.success(response.data.message)
+            this.$emit('register-success');
         }
       })
       .catch(error => {
         console.log(error);
-        
       });
             },
         }

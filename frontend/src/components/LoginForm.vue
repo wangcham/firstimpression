@@ -7,7 +7,7 @@
         <span class="spacer"></span>
         <el-button @click="showRegisterForm = true" color="#626aef">注册</el-button>
         <el-dialog v-model="showRegisterForm" title="注册">
-          <RegisterForm></RegisterForm>
+          <RegisterForm @register-success="showRegisterForm=false"></RegisterForm>
         </el-dialog>
       </div>
     </div>
